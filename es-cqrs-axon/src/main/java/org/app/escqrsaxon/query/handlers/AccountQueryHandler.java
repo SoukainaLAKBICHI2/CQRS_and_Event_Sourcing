@@ -35,4 +35,8 @@ public class AccountQueryHandler {
         List<AccountOperation> operations = operationRepository.findByAccountId(query.getAccountId());
         return new AccountStatementResponseDTO(account, operations);
     }
+    @QueryHandler
+    public AccountOperation on(WatchEventQuery query){
+        return AccountOperation.builder().build();
+    }
 }
