@@ -2,9 +2,11 @@ package org.app.escqrsaxon.commands.controllers;
 import org.app.escqrsaxon.commands.command.AddAccountCommand;
 import org.app.escqrsaxon.commands.command.CreditAccountCommand;
 import org.app.escqrsaxon.commands.command.DebitAccountCommand;
+import org.app.escqrsaxon.commands.command.UpdateAccountStatusCommand;
 import org.app.escqrsaxon.commands.dtos.AddNewAccountRequestDTO;
 import org.app.escqrsaxon.commands.dtos.CreditAccountRequestDTO;
 import org.app.escqrsaxon.commands.dtos.DebitAccountRequestDTO;
+import org.app.escqrsaxon.commands.dtos.UpdateAccountStatusRequestDTO;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.axonframework.eventsourcing.eventstore.EventStore;
 import org.springframework.web.bind.annotation.*;
@@ -55,6 +57,16 @@ public class AccountCommandController {
         ));
         return response;
     }
+    //----------------------UpdateStatus----------------------------
+    @PutMapping("/updateStatus")
+    public CompletableFuture<String> updateStatus(@RequestBody UpdateAccountStatusRequestDTO request) {
+        CompletableFuture<String> response = commandGateway.send(new UpdateAccountStatusCommand(
+                request.accountId(),
+                request.status()
+        ));
+        return response;
+    }
+
     @ExceptionHandler(Exception.class)
     public String exceptionHandler(Exception exception) {
         return exception.getMessage();
