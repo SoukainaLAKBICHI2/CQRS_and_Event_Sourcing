@@ -6,6 +6,7 @@ import org.app.escqrsaxon.query.entities.Account;
 import org.app.escqrsaxon.query.entities.AccountOperation;
 import org.app.escqrsaxon.query.queries.GetAccountStatementQuery;
 import org.app.escqrsaxon.query.queries.GetAllAccountsQuery;
+import org.app.escqrsaxon.query.queries.WatchEventQuery;
 import org.app.escqrsaxon.query.repositories.AccountRepository;
 import org.app.escqrsaxon.query.repositories.OperationRepository;
 import org.axonframework.queryhandling.QueryHandler;

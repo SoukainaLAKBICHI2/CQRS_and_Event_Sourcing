@@ -6,5 +6,4 @@ import lombok.Getter;
 
 @Getter @AllArgsConstructor
 public class WatchEventQuery {
-    private String accountId;
-}
+    private String accountId;}
